@@ -1,14 +1,14 @@
 Question 1: Which cities and countries have the highest level of transaction revenues on the site?
 
 SQL Queries for city:
-
+'''sql
 SELECT city, total_transaction_revenue 
 FROM all_sessions
 WHERE city IS NOT null AND
     total_transaction_revenue IS NOT null
 GROUP BY city, total_transaction_revenue DESC
 LIMIT 10
-
+'''
 Answer: The top highest cities are Atlanta, Sunnyvale, Tel Aviv-Yafo, Los Angeles, and Seattle.
 
 SQL Queries for country:
