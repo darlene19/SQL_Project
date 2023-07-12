@@ -13,7 +13,7 @@ Project/Goals
 Process
 1. Create dataset in PostgreSQL named ‘ecommerce’.
 2. Create tables in the dataset.
-
+```
 CREATE TABLE all_sessions (
     fullVisitorId text,
     channelGrouping text,
@@ -93,7 +93,8 @@ CREATE TABLE sales_report (
     sentimentMagnitude float,
     ratio float
 )
- 
+ ```
+
 3. Import csv files by following the steps on the link below:
 
 https://youtu.be/6Jf7eTkIaR4
@@ -125,18 +126,24 @@ Challenges
 
 1. Importing the csv files resulted in some errors, mainly because the created columns in each table have different data type than what is in the csv files.  This can resolve by taking time to analyze the raw data and determine what is the best data type that describes the values in the columns. Knowledge in different data types will help a lot too.
 
-2. There were a lot of NULL values in most of the columns. Deciding on whether or not to include them depends on knowing the objective of the project. 
+2. We are working on such a large dataset and it affected the performace of my machine. Some queries take longer to give results.
+
+3. There were a lot of NULL values in most of the columns. Deciding on whether or not to include them depends on knowing the objective of the project. 
    
+4. Not enough information about the dataset in general.
+
    
 Future Goals
+
+If I were given more time to work on this data, I would like to dig in deeper on the following:
 
 1. Since all_sessions is such a big table with 27 columns, I plan on creating 2 tables from it. This will also minimize the query time in pgAdmin, and potential crashing of the program.
 
 2. I will analyze more on the values in each column and how they were directly related to each other. For example, in analytics table, the revenue doesn’t exactly match the value of units_sold * unit_price. It is possible that some products has discounts subtracted from them or tax, customs or other fees were added.
 
-3. Further data cleaning and analyzing to remove remaining null values.
+3. Further data cleaning and analyzing to remove remaining null values. Again, this will depend on what you want to get from the data.
 
-4. Include the date in the analysis, to find relationship and pattern between months in the year or the year itself, and the products being purchase. 
+4. Include the date in the analysis, to find relationship and pattern between months in the year or between the years themselves, and the products being purchase. Example: Are the visitors  purchasing pens close to the beginning of the school year or all throughout the year? 
 
 
 
