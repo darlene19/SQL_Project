@@ -1,4 +1,4 @@
-Question 1: 1. What channel grouping drives the highest revenue in each city and country?
+Question 1: What channel grouping drives the highest revenue in each city and country?
 
 SQL Queries:
 
@@ -17,7 +17,7 @@ Answer: For both city and country, referral drives the most revenue, followed by
 ———————————————————————————————————————————————
 
 
-Question 2: 2. What is the top 3 most expensive product sold?
+Question 2: What is the top 3 most expensive product sold?
 
 SQL Queries:
 
@@ -39,7 +39,7 @@ Answer:
 
 ———————————————————————————————————————————————
 
-Question 3: 3. What are the top 5 most viewed product categories?
+Question 3: What are the top 5 most viewed product categories?
 
 SQL Queries:
 
