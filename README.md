@@ -74,7 +74,6 @@ CREATE TABLE products (
     restockingLeadTime integer,
     sentimentScore float,
     sentimentMagnitude float,
-
     PRIMARY KEY(SKU),
     UNIQUE(SKU)
 );
@@ -111,21 +110,33 @@ See files starting_with_questions.md and starting_with_data.md.
 
 See file QA.md.
 
+
 Results
 
-
+Here are some of the findings I got after analyzing the data.
+1. USA is the highest revenue generator for the site.
+2. Average number of products purchased for city ranges from 1 - 95, while for countries, it ranges from 1 - 52.
+3. There are more revenue from Referrals than any othe channel groups.
+4. The most viewd product category is Home.
+5. Ballpoint LED Light Pen is the top-selling product.
+   
 
 Challenges
 
 1. Importing the csv files resulted in some errors, mainly because the created columns in each table have different data type than what is in the csv files.  This can resolve by taking time to analyze the raw data and determine what is the best data type that describes the values in the columns. Knowledge in different data types will help a lot too.
 
-2. There were a lot of NULL values in most of the columns. Deciding on whether or not to include them depends on knowing the objective of the project.
-
+2. There were a lot of NULL values in most of the columns. Deciding on whether or not to include them depends on knowing the objective of the project. 
+   
+   
 Future Goals
 
 1. Since all_sessions is such a big table with 27 columns, I plan on creating 2 tables from it. This will also minimize the query time in pgAdmin, and potential crashing of the program.
 
 2. I will analyze more on the values in each column and how they were directly related to each other. For example, in analytics table, the revenue doesn’t exactly match the value of units_sold * unit_price. It is possible that some products has discounts subtracted from them or tax, customs or other fees were added.
+
+3. Further data cleaning and analyzing to remove remaining null values.
+
+4. Include the date in the analysis, to find relationship and pattern between months in the year or the year itself, and the products being purchase. 
 
 
 
