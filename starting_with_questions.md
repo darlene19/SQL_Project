@@ -2,24 +2,28 @@ Question 1: Which cities and countries have the highest level of transaction rev
 
 SQL Queries for city:
 
-```SELECT city, total_transaction_revenue 
+```
+SELECT city, total_transaction_revenue 
 FROM all_sessions
 WHERE city IS NOT null AND
     total_transaction_revenue IS NOT null
 GROUP BY city, total_transaction_revenue DESC
-LIMIT 10```
+LIMIT 10
+```
 
 Answer: The top highest cities are Atlanta, Sunnyvale, Tel Aviv-Yafo, Los Angeles, and Seattle.
 
 SQL Queries for country:
 
-```SELECT country, total_transaction_revenue 
+```
+SELECT country, total_transaction_revenue 
 FROM all_sessions
 WHERE country IS NOT null AND
     total_transaction_revenue IS NOT null
 GROUP BY country, total_transaction_revenue
 ORDER BY total_transaction_revenue DESC
-LIMIT 20```
+LIMIT 20
+```
 
 Answer: The top highest countries are United States, Israel, and Australia.
 
@@ -29,7 +33,8 @@ Question 2: What is the average number of products ordered from visitors in each
 
 SQL Queries:
 
-```SELECT city, country, 
+```
+SELECT city, country, 
 	AVG(units_sold) OVER () AS avg_unit_sold,
 	AVG(units_sold) OVER (PARTITION BY city) AS avg_unit_sold_by_city,
 	AVG(units_sold) OVER (PARTITION by country) AS avg_unit_sold_by_country
@@ -37,7 +42,8 @@ FROM all_sessions AS als
 JOIN analytics AS a
 	ON als.full_visitor_id = a.full_visitor_id
 WHERE city IS not null AND
-	country IS NOT null```
+	country IS NOT null
+```
 
 Answer: For cities, the average number of products ordered ranges from 1 to 95.  For countries, the average ranges from 1 to 52. 
 
@@ -47,13 +53,15 @@ Question 3: Is there any pattern in the types (product categories) of products o
 
 SQL Queries:
 
-```SELECT COUNT(*) AS prod_per_category, product_category, city, country
+```
+SELECT COUNT(*) AS prod_per_category, product_category, city, country
 FROM all_sessions
 WHERE city IS NOT null 
 	AND country IS NOT null
 GROUP BY product_category, city, country
 ORDER BY prod_per_category, city, country
-LIMIT 100```
+LIMIT 100
+```
 
 Answer: For both the city and country, the most popular category of products ordered is Home/Apparel, followed by Home/Electronics and Home/Office.
 
@@ -63,13 +71,15 @@ Question 4: What is the top-selling product from each city/country? Can we find 
 
 SQL Queries:
 
-```SELECT sr.total_ordered, sr.name, als.city, als.country, als.visit_id
+```
+SELECT sr.total_ordered, sr.name, als.city, als.country, als.visit_id
 FROM sales_report AS sr
 JOIN all_sessions AS als
 	ON sr.product_sku = als.product_sku
 WHERE sr.total_ordered > 0
 GROUP BY sr.total_ordered, sr.name, als.visit_id, als.city, als.country
-ORDER BY sr.total_ordered DESC```
+ORDER BY sr.total_ordered DESC
+```
 
 Answer: For both the city and country, the top selling product is Ballpoint LED Light Pen, followed by 17oz Stainless Steel Sport Bottle and Leatherette Journal.
 
@@ -79,13 +89,15 @@ Question 5: Can we summarize the impact of revenue generated from each city/coun
 
 SQL Queries:
 
-```SELECT city, country, SUM(total_transaction_revenue)
+```
+SELECT city, country, SUM(total_transaction_revenue)
 FROM all_sessions
 WHERE total_transaction_revenue IS NOT null AND 
 	city IS NOT null AND
 	country IS NOT null
 GROUP BY city, country
-ORDER BY SUM(total_transaction_revenue) DESC```
+ORDER BY SUM(total_transaction_revenue) DESC
+```
 
 Answer:
 
