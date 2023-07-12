@@ -2,6 +2,7 @@ Question 1: What channel grouping drives the highest revenue in each city and co
 
 SQL Queries:
 
+```
 SELECT als.country, als.city, als.channel_grouping, a.revenue 
 	 FROM all_sessions AS als 
 JOIN analytics AS a 
@@ -11,6 +12,7 @@ JOIN analytics AS a
 	 	revenue IS NOT null
 GROUP BY als.country, als.channel_grouping, a.revenue, als.city 
 ORDER BY a.revenue DESC
+```
 
 Answer: For both city and country, referral drives the most revenue, followed by Organic Search and Display.
 
@@ -21,6 +23,7 @@ Question 2: What is the top 3 most expensive product sold?
 
 SQL Queries:
 
+```
 SELECT als.product_name, a.unit_price 
 FROM analytics AS a
 JOIN all_sessions AS als
@@ -28,6 +31,7 @@ JOIN all_sessions AS als
 GROUP BY als.product_name, a.unit_price 
 ORDER BY a.unit_price DESC 
 Limit 5
+```
 
 Answer: 
 
@@ -43,6 +47,7 @@ Question 3: What are the top 5 most viewed product categories?
 
 SQL Queries:
 
+```
 SELECT product_category, COUNT(*) AS view_count
 FROM all_sessions 
 WHERE country IS NOT null AND
@@ -51,6 +56,7 @@ WHERE country IS NOT null AND
 GROUP BY product_category
 ORDER BY view_count DESC
 LIMIT 5
+```
 
 Answer:
 
