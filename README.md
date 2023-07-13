@@ -115,10 +115,10 @@ See file QA.md.
 Results
 
 Here are some of the findings I got after analyzing the data.
-1. USA is the highest revenue generator for the site.
+1. USA is the highest revenue generator for the site. This was expected as this is a USA-based site. The online retailer can decide if either they will focus more on targeting US visitors, or expand to other countries that can add to their revenue. 
 2. Average number of products purchased for city ranges from 1 - 95, while for countries, it ranges from 1 - 52.
-3. There are more revenue from Referrals than any othe channel groups.
-4. The most viewd product category is Home.
+3. There are more revenue from Referrals than any othe channel groups. This tells us that the online site is doing good in their advertising and marketing.
+4. The most viewed product category is Home.
 5. Ballpoint LED Light Pen is the top-selling product.
    
 
