@@ -183,13 +183,7 @@ ALTER TABLE sales_by_sku
 ALTER COLUMN productsku TYPE VARCHAR USING productsku::varchar
 ```
 
-2. Assign a primary key.
-```
-ALTER TABLE sales_by_sku
-ADD PRIMARY KEY (productsku)
-```
-
-3. Change column name for better readability and for consistency.
+2. Change column name for better readability and for consistency.
 ```
 ALTER TABLE sales_by_sku
 RENAME COLUMN productsku TO product_sku
@@ -206,10 +200,12 @@ ALTER COLUMN productsku TYPE VARCHAR USING productsku::varchar,
 ALTER COLUMN name TYPE VARCHAR USING name::varchar
 ```
 
-2. Assign a primary key.
+2. Assign a foreign key.
 ```
 ALTER TABLE sales_report
-ADD PRIMARY KEY (productsku)
+ADD CONSTRAINT sales_report_product_sku_fkey 
+FOREIGN KEY(product_sku) 
+REFERENCES products(product_sku)
 ```
 
 3. Change column names for better readability and for consistency.
