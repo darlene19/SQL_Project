@@ -68,3 +68,12 @@ FROM QA_raw
 ```
 
 The QA_result showed Pass.
+
+In general, there were a lot of risk areas from the data provided such as duplicate values, null values, lack of information about the data itself such as information about the description of columns in each table. If given more time, I would like to work more on the following:
+
+1. Create 2 or more tables from all_sessions table to obtain more consistent data, therefore, ensuring the accuracy and reliability of the data.
+
+2. Develop SQL queries to obtain statistical analysis for each column for each table, such as minimum, maximum, average, to help detect any potential data issues and outliers, which can indicate possible data entry errors. 
+
+3. Create some kind of visualization to better analyze and understand the patterns and relationships between the data as a whole, which is not always obvious when just looking at numbers from tables.
+
