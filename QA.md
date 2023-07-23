@@ -30,7 +30,7 @@ HAVING COUNT(product_sku) >1
 
 The query yields no result as expected.
 
-3. Checking referential integrity between products and sales_report table to ensure the relationship between tables remain consistent and valid using product_sku.
+3. Checking referential integrity between products and sales_report table to ensure the primary key-foreign key relationship between tables remain consistent and valid using product_sku.
 
 SQL Query:
 ```
