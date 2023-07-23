@@ -100,14 +100,14 @@ ALTER TABLE analytics
 DROP COLUMN userid 
 ```
 
-1. Change the price values to a meaningful value.
+2. Change the price values to a meaningful value.
 ```
 UPDATE analytics
 SET unit_price = unit_price / 1000000,
 SET revenue = revenue / 1000000
 ```
 
-1. Changing the data types of the columns.
+3. Changing the data types of the columns.
 ```
 ALTER TABLE analytics
 ALTER COLUMN fullvisitorid TYPE NUMERIC USING fullvisitorid::numeric,
@@ -115,7 +115,7 @@ ALTER COLUMN revenue TYPE FLOAT USING revenue::float,
 ALTER COLUMN unit_price TYPE FLOAT USING unit_price::float
 ```
 
-1. Change column names for better readability and for consistency.
+4. Change column names for better readability and for consistency.
 ```
 ALTER TABLE analytics
 RENAME COLUMN visitnumber TO visit_number,
@@ -128,7 +128,7 @@ RENAME COLUMN pafeviews TO page_views,
 RENAME COLUMN timeonsite TO time_on_site
 ```
 
-1. Remove duplicate rows.
+5. Remove duplicate rows.
 ```
 CREATE TABLE analytics_bckup AS
 (SELECT DISTINCT * FROM analytics)
@@ -171,14 +171,14 @@ ALTER TABLE products
 RENAME COLUMN sku TO productsku
 ```
 
-1. Changing the data types of the columns.
+2. Changing the data types of the columns.
 ```
 ALTER TABLE products
 ALTER COLUMN productsku TYPE VARCHAR USING productsku::varchar,
 ALTER COLUMN name TYPE VARCHAR USING name::varchar
 ```
 
-1. Changing column names for better readability and for consistency.
+3. Changing column names for better readability and for consistency.
 ```
 ALTER TABLE products
 RENAME COLUMN productsku TO product_sku,
