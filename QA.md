@@ -1,24 +1,27 @@
 What are your risk areas? Identify and describe them.
 
-1. In analytics table, I am assuming that the values in the revenue should be equal to the units_sold multiplied by the  unit_price, but they are not. There might be something that contributed to this discrepancy, such as a discount applied to the product, which makes it cost less, or additional fees like taxes or customs, which makes it cost more.  If given more time, I would like to dig deeper on this and find the correct formula that will makes sense of the data. 
-
-To fix this, transform the value of revenue with the proper formula: 
+1. In analytics table, there was a negative value for the units_sold which indicates an erroneous situation. It could be a result of human data entry mistakes, or a return, refund or void transaction. It is important to further investigate the occurence of this negative value to take the necessary actions, such as deleting or keeping it from the dataset.
 
 SQL Query:
 ```
-UPDATE analytics
-SET revenue = (units_sold * unit_price)
-WHERE revenue != (units_sold * unit_price)
+SELECT units_sold
+FROM analytics
+WHERE units_sold < 0
+```
+The query gave one record with a value of -89.
+
+2. Checking for any missing or null values. 
+   
+SQL Query:
+```
+SELECT product_sku 
+FROM products
+WHERE product_sku IS null
 ```
 
-Similar on the all_sessions table, transform the value of product_revenue with the proper formula:
-```
-UPDATE all_sessions
-SET product_revenue = (product_quantity * product_price)
-WHERE product_revenue != (product_quantity * product_price)
-```
+The query yields no result. 
 
-2. In products table, checking if product_sku have no duplicate values since primary key should be unique.
+3. In products table, checking if product_sku have no duplicate values since primary key should be unique.
 
 SQL Query:
 ```
@@ -30,7 +33,7 @@ HAVING COUNT(product_sku) >1
 
 The query yields no result as expected.
 
-3. Checking referential integrity between products and sales_report table to ensure the primary key-foreign key relationship between tables remain consistent and valid using product_sku.
+4. Checking referential integrity between products and sales_report table to ensure the primary key-foreign key relationship between tables remain consistent and valid using product_sku.
 
 SQL Query:
 ```
@@ -68,6 +71,8 @@ FROM QA_raw
 ```
 
 The QA_result showed Pass.
+
+Future Goals
 
 In general, there were a lot of risk areas from the data provided such as duplicate values, null values, lack of information about the data itself such as information about the description of columns in each table. If given more time, I would like to work more on the following:
 
