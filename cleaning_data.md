@@ -82,6 +82,14 @@ RENAME COLUMN ecommerceaction_type TO ecommerce_action_type,
 RENAME COLUMN ecommerceaction_step TO ecommerce_action_step,
 RENAME COLUMN ecommerceaction_option TO ecommerce_action_option
 ```
+
+6. Transform the value of revenue with the proper formula that will make more sense of the data.
+```
+UPDATE all_sessions
+SET product_revenue = (product_quantity * product_price)
+WHERE product_revenue != (product_quantity * product_price)
+```
+
 ———————————————————————————————————————————————
 
 For analytics table:
@@ -92,14 +100,14 @@ ALTER TABLE analytics
 DROP COLUMN userid 
 ```
 
-2. Change the price values to a meaningful value.
+1. Change the price values to a meaningful value.
 ```
 UPDATE analytics
 SET unit_price = unit_price / 1000000,
 SET revenue = revenue / 1000000
 ```
 
-3. Changing the data types of the columns.
+1. Changing the data types of the columns.
 ```
 ALTER TABLE analytics
 ALTER COLUMN fullvisitorid TYPE NUMERIC USING fullvisitorid::numeric,
@@ -107,7 +115,7 @@ ALTER COLUMN revenue TYPE FLOAT USING revenue::float,
 ALTER COLUMN unit_price TYPE FLOAT USING unit_price::float
 ```
 
-4. Change column names for better readability and for consistency.
+1. Change column names for better readability and for consistency.
 ```
 ALTER TABLE analytics
 RENAME COLUMN visitnumber TO visit_number,
@@ -120,7 +128,7 @@ RENAME COLUMN pafeviews TO page_views,
 RENAME COLUMN timeonsite TO time_on_site
 ```
 
-5. Remove duplicate rows.
+1. Remove duplicate rows.
 ```
 CREATE TABLE analytics_bckup AS
 (SELECT DISTINCT * FROM analytics)
@@ -146,6 +154,13 @@ DROP TABLE analytics_bckup
 
 SELECT * FROM analytics
 ```
+
+6. Transform the value of revenue with the proper formula that will make more sense of the data.
+```
+UPDATE analytics
+SET revenue = (units_sold * unit_price)
+WHERE revenue != (units_sold * unit_price)
+```
 ———————————————————————————————————————————————
 
 For products table:
@@ -156,14 +171,14 @@ ALTER TABLE products
 RENAME COLUMN sku TO productsku
 ```
 
-2. Changing the data types of the columns.
+1. Changing the data types of the columns.
 ```
 ALTER TABLE products
 ALTER COLUMN productsku TYPE VARCHAR USING productsku::varchar,
 ALTER COLUMN name TYPE VARCHAR USING name::varchar
 ```
 
-3. Changing column names for better readability and for consistency.
+1. Changing column names for better readability and for consistency.
 ```
 ALTER TABLE products
 RENAME COLUMN productsku TO product_sku,
